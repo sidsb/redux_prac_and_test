@@ -1,8 +1,12 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { shallow, configure, mount } from "enzyme";
+import React from "react";
+import { UserContainer } from "./components/UserContainer";
+import Adapter from 'enzyme-adapter-react-16'
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+configure({ adapter: new Adapter() })
+
+describe("rendering components", () => {
+  it("renders UserContainer components without crashing", () => {
+    shallow(<UserContainer />)
+  })
+})
